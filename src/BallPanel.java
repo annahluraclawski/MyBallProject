@@ -7,9 +7,17 @@ public class BallPanel extends JPanel{
     int xSpeed = 3;
     int ySpeed = 3;
 
-    Ball[] balls = new Ball();
-    Ball[] myBall = new Ball[];
+    Ball[] balls = new Ball[20];
+    Ball myBall = new Ball();
+
     public BallPanel(){
+
+    for(int i = 0; i<20; i++)
+
+    {
+        balls[i] = new Ball();
+    }
+
         setFocusable(true);
         addKeyListener(new KeyListener() {
             @Override
@@ -31,7 +39,7 @@ public class BallPanel extends JPanel{
 
             }
         });
-        setBackground(Color.RED);
+        setBackground(Color.BLACK);
     }
 
     @Override
@@ -52,6 +60,12 @@ public class BallPanel extends JPanel{
         catch(Exception e){
             System.out.println(e);
         }
+
+        for(int i = 0; i<20; i++){
+            balls[i].drawBall(g);
+            balls[i].moveBall(this);
+        }
+
         repaint();
     }
 }
